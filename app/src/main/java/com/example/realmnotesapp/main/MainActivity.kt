@@ -3,7 +3,7 @@ package com.example.realmnotesapp.main
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             this,
             R.layout.activity_main
         )
+        notifyUser()
         actionMove()
         displaySavedNotes()
     }
@@ -36,6 +37,16 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, AddNotesActivity::class.java)
             startActivity(intent)
             return@setOnLongClickListener true
+        }
+    }
+
+    private fun notifyUser() {
+        binding.fab.setOnClickListener {
+            val alertDialog = AlertDialog.Builder(this@MainActivity)
+            alertDialog.setCancelable(true)
+            alertDialog.setMessage(resources.getString((R.string.hold_button)))
+            alertDialog.setTitle(getString(R.string.notification))
+            alertDialog.show()
         }
     }
 
@@ -53,15 +64,15 @@ class MainActivity : AppCompatActivity() {
                     adapter = notesAdapter
                 }
             } else {
-                Toast.makeText(
-                    this@MainActivity,
-                    "Results are empty", Toast.LENGTH_SHORT
-                )
-                    .show()
+                val alertDialog = AlertDialog.Builder(this@MainActivity)
+                alertDialog.setCancelable(true)
+                alertDialog.setMessage(resources.getString(R.string.result_empty))
+                alertDialog.setTitle(getString(R.string.notification))
+                alertDialog.show()
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            Log.d("NOTESNOTSAVED", "displaySavedNotes: ${e.printStackTrace()}")
+            Log.d("NOTES NOT SAVED", "displaySavedNotes: ${e.printStackTrace()}")
         }
     }
 }

@@ -45,7 +45,7 @@ class AddNotesActivity : AppCompatActivity() {
                 realm.commitTransaction()
                 Toast.makeText(
                     this@AddNotesActivity,
-                    "Note added successfully", Toast.LENGTH_SHORT
+                    getString(R.string.note_success), Toast.LENGTH_SHORT
                 )
                     .show()
 
@@ -54,7 +54,7 @@ class AddNotesActivity : AppCompatActivity() {
 
             } catch (e: Exception) {
                 e.printStackTrace()
-                Log.d("NOTESFAILED", "${e.printStackTrace()}")
+                Log.d("NOTES FAILED", "${e.printStackTrace()}")
             }
         }
     }

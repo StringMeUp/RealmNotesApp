@@ -1,74 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="150dp"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
-            <EditText
-                android:id="@+id/title_edit_text"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_gravity="start"
-                android:layout_marginTop="40dp"
-                android:autofillHints="@string/app_name"
-                android:background="@android:color/white"
-                android:fontFamily="@font/futurabook"
-                android:hint="@string/enter_title"
-                android:inputType="text"
-                android:padding="4dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <EditText
-                android:id="@+id/description_edit_test"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_gravity="start"
-                android:layout_marginTop="10dp"
-                android:autofillHints="@string/app_name"
-                android:background="@android:color/white"
-                android:fontFamily="@font/futurabook"
-                android:hint="@string/enter_description"
-                android:inputType="text"
-                android:padding="4dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:hint="@string/enter_title"
+                    android:textColorHint="@android:color/darker_gray">
 
-            <Button
-                android:id="@+id/add_button"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:backgroundTint="@color/colorPrimary"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="@string/save_note"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                    <EditText
+                        android:id="@+id/title_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="@string/app_name"
+                        android:fontFamily="@font/futura_book"
+                        android:gravity="start"
+                        android:inputType="text"
+                        android:textColor="@android:color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/enter_description"
+                    android:textColorHint="@android:color/darker_gray">
+
+                    <EditText
+                        android:id="@+id/description_edit_test"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="@string/app_name"
+                        android:fontFamily="@font/futura_book"
+                        android:gravity="start"
+                        android:inputType="text"
+                        android:textColor="@android:color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/add_button"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/save_note"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

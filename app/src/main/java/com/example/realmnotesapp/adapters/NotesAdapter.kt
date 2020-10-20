@@ -1,35 +1,33 @@
 package com.example.realmnotesapp.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.realmnotesapp.R
+import com.example.realmnotesapp.databinding.NotesCardBinding
 import com.example.realmnotesapp.model.NoteModel
-import com.example.realmnotesapp.util.MyApp
 
-class NotesAdapter(val list: ArrayList<NoteModel>) :
+class NotesAdapter(
+    private val list: ArrayList<NoteModel>
+) :
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
 
-    class NotesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class NotesViewHolder(private val binding: NotesCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(note: NoteModel) {
-            val id = itemView.findViewById<TextView>(R.id.id_text_view)
-            id.typeface = ResourcesCompat.getFont(MyApp.appContext, R.font.futurabold)
-            val title = itemView.findViewById<TextView>(R.id.title_text_view)
-            title.typeface = ResourcesCompat.getFont(MyApp.appContext, R.font.futuraheavy)
-            val description = itemView.findViewById<TextView>(R.id.description_text_view)
-            description.typeface = ResourcesCompat.getFont(MyApp.appContext, R.font.futurabook)
-            id.text = note.id.toString()
-            title.text = note.title.toString()
-            description.text = note.description.toString()
+            binding.idTextView.text = note.id.toString()
+            binding.titleTextView.text = note.title
+            binding.descriptionTextView.text = note.description
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.notes_card, parent, false)
-        return NotesViewHolder(view)
+        val notesBinding = DataBindingUtil.inflate<NotesCardBinding>(
+            LayoutInflater.from(parent.context),
+            R.layout.notes_card, parent, false
+        )
+        return NotesViewHolder(notesBinding)
     }
 
     override fun getItemCount(): Int = list.size
