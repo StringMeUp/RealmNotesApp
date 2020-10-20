@@ -75,4 +75,8 @@ class MainActivity : AppCompatActivity() {
             Log.d("NOTES NOT SAVED", "displaySavedNotes: ${e.printStackTrace()}")
         }
     }
+
+    override fun onBackPressed() {
+
+    }
 }
