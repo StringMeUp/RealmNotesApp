@@ -22,6 +22,14 @@ class AddNotesActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_notes)
         realm = Realm.getDefaultInstance()
         addNotes()
+        onPressCancel()
+    }
+
+    private fun onPressCancel() {
+        binding.cancelButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun addNotes() {
@@ -57,5 +65,9 @@ class AddNotesActivity : AppCompatActivity() {
                 Log.d("NOTES FAILED", "${e.printStackTrace()}")
             }
         }
+    }
+
+    override fun onBackPressed() {
+
     }
 }

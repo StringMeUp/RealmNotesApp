@@ -12,4 +12,5 @@
     <string name="result_empty">You do not have any notes. Add some if you wish!</string>
     <string name="notification">Notification</string>
     <string name="hold_button">Hold the button to add a new note!</string>
+    <string name="cancel">Cancel</string>
 </resources>
